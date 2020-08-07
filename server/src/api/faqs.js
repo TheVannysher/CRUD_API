@@ -2,7 +2,7 @@ const express = require('express');
 const monk = require('monk');
 
 const db = monk(process.env.MONGO_URI);
-const faqs = db.get('faqs')
+const faqs = db.get('faqs');
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ const router = express.Router();
 router.get('/', async (req,res,next) => {
     try {
         const items = await faqs.find({});
-        res.json(items)
+        res.json(items);
     } catch (error) {
         next(error);
     }
